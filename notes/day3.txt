@@ -1,0 +1,21 @@
+We use templates to render html in views
+
+First we have to create templates folder and add required html files in it.
+Then go to settings.py and add the directory to DIR list
+
+In views.py,
+def Home_View(request):
+  return render(request,"home.html,{}") --> third argument is a dictionary
+
+To make html dynamic,
+def Home_View(request, *args, **kwargs):
+    # return HttpResponse("<h1>Hello Vishnu</h1>")
+    context = {"name": "vishnu Kumar Kvs", "city": "Bangalore"}
+    return render(request, "home.html", context)
+In home.html
+<h2>I am {{name}} and live in {{city}}</h2>
+
+Blocks in django
+You can create a base.html and extend it and use it in any html doc
+
+First,it will check templates folder in project level,next it checks inside app

@@ -1,0 +1,58 @@
+To create virtual environment in python
+python -m venv . --> -m = module
+Activate it
+source bin/activate --> linux
+.\Scripts\activate --> Windows
+
+Install django
+pip install django==3.1.2
+
+First create a project
+django-admin startproject bootcamp .
+
+Now we need to create an app. App is like a component of a website
+2 ways to create it
+django-admin startapp products
+or
+python manage.py startapp products --> preffered
+
+Now go to products folder (app we just created)
+Lets assume this is database.It has a table with colums id,title,price
+we add these in a class
+
+after creating apps, you should add it to settings.py
+Then run 
+python manage.py makemigratitions 
+python manage.py migrate 
+This creates a database model
+
+After creating model, for admin access,you have to register it in admin.py
+
+Then create superuser
+python manage.py createsuperuser
+
+Run server
+python manage.py runserver
+
+In database to create objects,we can use django-admin(WebUI).Its for non-developers
+As a developer,you use shell
+
+>>> from producti.models import Product
+>>> Product.objects.create(title='Raspberry Pi') 
+<Product: Product object (1)>
+>>> Product.objects.create(title='Turing Pi')    
+<Product: Product object (2)>
+>>> Product.objects.get(id=2)                 
+<Product: Product object (2)>
+>>> Product.objects.create(title='Turing Pi',price=20) 
+<Product: Product object (3)>
+>>> Product.objects.create(title='Arduino',discount=False)    
+<Product: Product object (4)>
+
+Updating object
+>>> obj = Product.objects.get(id=1)
+>>> obj.price = 67
+>>> obj.save()
+>>> obj.delete() --> To delete object
+
+// bulk_create() To create lot of users. Check it up 

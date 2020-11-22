@@ -1,0 +1,45 @@
+Views
+
+We use views.py to take a request from webpage and return a response
+First,we create asimple view using http module of django
+Then we should edit the urls.py file in bootcamp
+
+>>> from producti.models import Product 
+>>> qs = Product.objects.all()
+>>> for obj in qs:
+...   print(obj.id)
+... 
+1
+2
+3
+4
+
+>>> for obj in qs:  
+...   print(obj.title) 
+... 
+Raspberry Pi
+Turing Pi
+Silicon M1
+Arduino
+--------------------
+In views.py 
+def Home_View(request, *args, **kwargs):
+    return HttpResponse("<h1>Hello Vishnu</h1>")
+
+
+def Product_View(request, *args, **kwargs):
+    obj = Product.objects.get(id=1)
+    return HttpResponse("Product title: "+obj.title)
+---------------------
+In urls.py
+    path('products/<int:id>/', views.Product_Dynamic_View),
+    path('product/1/', views.Product_View),
+    path('home/', views.Home_View),
+    path('admin/', admin.site.urls),
+
+If error happens, we can use Http404
+
+In default,id is the primary key but we can declare any variable as primary key, like
+db_id = models.UUIDField(primary_key=True,default=uuid.uuid4())
+
+Now instead of using id,we can use pk as parameter so that it fetches primary key

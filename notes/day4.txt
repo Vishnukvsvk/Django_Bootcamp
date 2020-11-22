@@ -1,0 +1,20 @@
+HTTP Methods
+
+GET       -   Retrive
+POST      -   Create (also update)
+PUT       -   Update
+DELETE    -   Destroy
+
+Every view gets a request and these request have HTTP methods
+
+request.GET , request.POST --> {"some":"data"}
+request.method == "POST", request.method=="GET" --> True/False
+
+For POST method, you can use form tag in html.
+<form method="POST" action=".">
+    <input type="text" />
+    <button type="submit">Send Data</button>   
+</form>
+But this is not at all preferred
+
+Another legit way is to use django forms

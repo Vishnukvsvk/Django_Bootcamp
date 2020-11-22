@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+<h1>This is used</h1>
+
+
+
+{% block content%}
+{% include "list.html" %}
+{{request.path}}
+<h3>Price is {{object.price}}</h3>
+{% endblock %}
